@@ -1,0 +1,25 @@
+{
+    "name": "uniasselvi/goldmanager",
+    "description": "projeto criado para a disciplia de Seminario Interdiscip",
+    "license": "GPLV3",
+    "type" : "project",
+
+    "autoload": {
+        "psr-4": {
+            "app\\": "src/app/",
+            "core\\": "src/core/"
+        },
+        "files": [
+            "config/config.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "amiranda",
+            "email": "amiranda@amiranda.dev.br"
+        }
+    ],
+    "require": {
+        "php":">=7.4"
+    }
+}
