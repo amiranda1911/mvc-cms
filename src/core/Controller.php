@@ -3,7 +3,7 @@
 namespace core;
 use core\View;
 
-class Controller {
+abstract class Controller {
 
     protected Session $session;
 
