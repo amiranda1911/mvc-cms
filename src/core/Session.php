@@ -14,12 +14,12 @@ class Session{
 
     public function __get($k){
         return isset($_SESSION[$k]) ? $_SESSION[$k] : null;
-    }
+    } 
     
-    public function getCsfr(): string{
-        if(!isset($this->csfr)){
-            $this->csfr = sha1(APP_SEED + uniqid(mt_rand(), true)); 
+    public function getCsrf(): string{
+        if(!isset($this->csrf)){
+            $this->csrf = sha1(APP_SEED + uniqid(mt_rand(), true)); 
         }
-        return $this->csfr;
+        return $this->csrf;
     }
 }
