@@ -1,6 +1,6 @@
 <?php
-
-define('VIEWS_DIR', ROOT.DS.'src'.DS.'app'.DS.'view');
+if(defined("ROOT"))
+    define('VIEWS_DIR', ROOT.DS.'src'.DS.'app'.DS.'view');
 
 define('APP_SEED', getenv('APP_SEED'));
 
