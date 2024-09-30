@@ -19,11 +19,20 @@ class Persistence {
             'host' => MYSQL_HOST,
             'dbname'   => GOLD_APP_DATABASE
         ];
-        $config = ORMSetup::createAttributesMetadataConfiguration($paths, $isDevMode);
+        $config = ORMSetup::createAttributeMetadataConfiguration($paths, $isDevMode);
         $connection = DriverManager::getConnection($dbParams, $config);
         $this->entityManager = new EntityManager($connection, $config);
     }
 
+    public function findAll(String $className) {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('e')->from($className, 'e');
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function find(String $className, String $id) {
+        return $this->entityManager->find($className, $id);
+    }
 
     public function save($object) {
         $this->entityManager->persist($object);
