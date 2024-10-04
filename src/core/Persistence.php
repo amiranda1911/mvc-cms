@@ -24,9 +24,12 @@ class Persistence {
         $this->entityManager = new EntityManager($connection, $config);
     }
 
-    public function findAll(String $className) {
+    public function findAll(String $className, $params = array()) {
         $queryBuilder = $this->entityManager->createQueryBuilder();
-        $queryBuilder->select('e')->from($className, 'e');
+        $queryBuilder->select('c')->from($className, 'c');
+        if(array_key_exists('order', $params)){
+            $queryBuilder->add('orderBy', $params['order'] );
+        }
         return $queryBuilder->getQuery()->getResult();
     }
 
