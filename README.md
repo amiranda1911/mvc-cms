@@ -26,3 +26,16 @@ class <Controller>Controller extends Controller{
     }
 }
 ```
+
+#Mapa da Aplicação
+
+/user
+lista usuarion
+
+/user/create
+cria um novo usuario
+
+/transaction/create/{id}
+cria uma nova transação para o usuario
+
+
