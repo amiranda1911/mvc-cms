@@ -18,11 +18,14 @@ class User {
     #[ORM\Column(type: 'string', name: 'name')]
     private $name;
     
-    #[ORM\Column(type: 'string', name: 'name')]
+    #[ORM\Column(type: 'string', name: 'email')]
     private $email; 
 
-    #[ORM\Column(type: 'string', name: 'name')]
+    #[ORM\Column(type: 'string', name: 'password')]
     private $password;
+
+    #[OneToMany(targetEntity: Transaction::class, mappedBy: 'user', indexBy: 'symbol')]
+    private Collection $posts;
 
 
     public function __construct($id, $name, $email, $password) {
