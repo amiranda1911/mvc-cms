@@ -18,20 +18,18 @@ class User {
     #[ORM\Column(type: 'string', name: 'name')]
     private $name;
     
-    #[ORM\Column(type: 'integer', name: 'amount')]
-    private $amount;
+    #[ORM\Column(type: 'string', name: 'name')]
+    private $email; 
 
-    #[ORM\Column(type: 'float', name: 'wallet')]
-    private $wallet;
+    #[ORM\Column(type: 'string', name: 'name')]
+    private $password;
 
-    #[OneToMany(targetEntity: Transaction::class, mappedBy: 'user', indexBy: 'symbol')]
-    private Collection $stocks;
 
-    public function __construct($id, $name, $amount, $wallet) {
+    public function __construct($id, $name, $email, $password) {
         $this->id = $id;
         $this->name = $name;
-        $this->amount = $amount;
-        $this->wallet = $wallet;
+        $this->email = $email;
+        $this->password = $password;
     }
 
     public function getId() {
@@ -42,50 +40,20 @@ class User {
         return $this->name;
     }
 
-    public function getAmount() {
-        return $this->amount;
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function check_password(string $password) {
+        return $this->password == sha1($password);
+    }
+
+    public function setName(string $name) {
+        $this->name = $name;
     }
     
-    public function addAmount($value) {
-        if(is_numeric($value) and $value > 0) {
-            $this->amount += $value;
-        }else{
-            throw new \InvalidArgumentException('Valor adicionado não pode ser negativo');
-        }
-    }
-
-    public function removeAmmount($value) {
-        if(is_numeric($value) and $value > 0) {
-            if ($value > $this->amount) {
-                throw new \InvalidArgumentException('Valor removido não pode ser mair que o saldo disponível');
-            }
-            $this->amount -= $value;
-        }else{
-            throw new \InvalidArgumentException('Valor removido não pode ser negativo');
-        }
-    }
-
-    public function getWallet() {
-        return $this->wallet;
-    }
-
-    public function addWallet($value) {
-        if(is_numeric($value) and $value > 0) {
-            $this->wallet += $value;
-        }else{
-            throw new \InvalidArgumentException('Valor adicionado não pode ser negativo');
-        }
-    }
-
-    public function removeWallet($value) {
-        if(is_numeric($value) and $value > 0) {
-            if ($value > $this->wallet) {
-                throw new \InvalidArgumentException('Valor removido não pode ser maior que o saldo disponível');
-            }
-            $this->wallet -= $value;
-        }else{
-            throw new \InvalidArgumentException('Valor removido não pode ser negativo');
-        }
-    }
+    public function setPassword(string $password) {
+        $this->password = sha1($password);
+    }  
 
 }
