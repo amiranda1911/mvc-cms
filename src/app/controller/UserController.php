@@ -14,11 +14,9 @@ class UserController extends Controller{
             $newUser = array();
             $newUser['id'] = $user->getId();
             $newUser['name'] = $user->getName();
-            $newUser['amount'] = $user->getAmount();
-            $newUser['wallet'] = $user->getWallet();
+            $newUser['email'] = $user->getAmount();
             array_push($users, $newUser);
         }
-        
         $view = new View('user/index', ['users' => $users]);
         $view->render();
     }
@@ -30,10 +28,14 @@ class UserController extends Controller{
             $view->render();
         }
         elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
-            
-            $user = new User(null, $_REQUEST['name'], 0, $_REQUEST['wallet']);
+            $user = new User(null, $_REQUEST['name'], $_REQUEST['email'], $_REQUEST['password']);
             $this->persistence->save($user);
-            var_dump($user);
+            $view = new View('user/view', 
+                ['id' => $user->getId(),
+                'name' => $user->getName(),
+                'email' => $user->getAmount()
+            ]);
+            $view->render();
         }
     }
 
@@ -43,7 +45,7 @@ class UserController extends Controller{
             $view = new View('user/view',
                 ['id' => $user->getId(),
                 'name' => $user->getName(),
-                'amount' => $user->getAmount(),
+                'email' => $user->getAmount(),
             ]);
             $view->render();
         }
