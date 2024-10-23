@@ -1,9 +1,18 @@
 <?php $this->layout('template', ['title' => 'User Profile']) ?>
 <form method="post">
-    <label for="">Nome:</label>
-    <input type="text" name="name">
-    <label>Saldo:</label>
-    <input type="number" step="0.01" name="wallet">
-    <input type="submit" value="Criar Usuário">
+    <div class="mb-3">
+        <label for="" class="form-label">Nome:</label>
+        <input type="text" name="name" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email:</label>
+        <input type="email" name="email" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Senha:</label>
+        <input type="password" name="password" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Criar Novo Usuário</button>
     <input type="hidden" name="csrf" value="<?=$this->e($csrf)?>">
 </form>
