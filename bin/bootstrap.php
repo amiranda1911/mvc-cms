@@ -15,7 +15,7 @@ $dbParams = [
     'user'     => MYSQL_USER,
     'password' => MYSQL_PASSWORD,
     'host' => MYSQL_HOST,
-    'dbname'   => GOLD_APP_DATABASE
+    'dbname'   => APP_DATABASE
 ];
 
 $config = ORMSetup::createAttributeMetadataConfiguration($paths, $isDevMode);
