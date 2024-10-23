@@ -18,7 +18,7 @@ class Session{
     
     public function getCsrf(): string{
         if(!isset($this->csrf)){
-            $this->csrf = sha1(APP_SEED.uniqid(mt_rand(), true)); 
+            $this->csrf = sha1(uniqid(mt_rand(), true)); 
         }
         return $this->csrf;
     }
