@@ -14,7 +14,7 @@ class UserController extends Controller{
             $newUser = array();
             $newUser['id'] = $user->getId();
             $newUser['name'] = $user->getName();
-            $newUser['email'] = $user->getAmount();
+            $newUser['email'] = $user->getEmail();
             array_push($users, $newUser);
         }
         $view = new View('user/index', ['users' => $users]);
@@ -33,7 +33,8 @@ class UserController extends Controller{
             $view = new View('user/view', 
                 ['id' => $user->getId(),
                 'name' => $user->getName(),
-                'email' => $user->getAmount()
+                'email' => $user->getEmail(),
+            
             ]);
             $view->render();
         }
@@ -45,7 +46,7 @@ class UserController extends Controller{
             $view = new View('user/view',
                 ['id' => $user->getId(),
                 'name' => $user->getName(),
-                'email' => $user->getAmount(),
+                'email' => $user->getEmail(),
             ]);
             $view->render();
         }
