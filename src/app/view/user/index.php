@@ -1,8 +1,8 @@
 <?php $this->layout('template', ['title' => 'Usuários']) ?>
 
-<table>
+<table class="table">
     <tr>
-        <th>Nome</th><th>Quantidade</th><th>Saldo</th>
+        <th>Nome</th><th>Email</th>
     </tr>
     <?php foreach ($users as $user): ?>
         <tr>
@@ -10,12 +10,8 @@
                 <a href="/user/view/<?= $user['id']; ?>"><?= $user['name']; ?></a>   
             </td>
             <td>
-                <?= $user['amount']; ?>
+                <?= $user['email']; ?>
             </td>
-            <td>
-                <?= $user['wallet']; ?>
-            </td>
-            <td><a href="/transaction/create/<?= $user['id']; ?>">Realizar compra</a></td>
         </tr>
     <?php endforeach; ?>
 </table>
