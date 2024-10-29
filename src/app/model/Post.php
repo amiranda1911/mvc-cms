@@ -23,6 +23,12 @@ class Post {
     #[ORM\Column(type: 'string', name: 'content')]
     private $content;
 
+    public function __construct($title, $content, $user){
+        $this->title = $title;
+        $this->content = $content;
+        $this->user = $user;
+    }
+
     public function getId() {
         return $this->id;
     }
@@ -41,6 +47,10 @@ class Post {
 
     public function setContent(string $content) {
         $this->content = $content;
+    }
+
+    public function getUser() {
+        return $this->user;
     }
 
 }
