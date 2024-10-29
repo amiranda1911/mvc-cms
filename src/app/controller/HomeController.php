@@ -11,11 +11,11 @@ class HomeController extends Controller{
         $postsObject = $this->persistence->findAll('app\model\Post');
         $posts = [];
         foreach ($postsObject as $post){
-            $newUser = array();
-            $newUser['id'] = $post->getId();
-            $newUser['title'] = $post->getTitle();
-            $newUser['content'] = $post->getContent();
-            array_push($users, $newUser);
+            $newPost = array();
+            $newPost['id'] = $post->getId();
+            $newPost['title'] = $post->getTitle();
+            $newPost['content'] = $post->getContent();
+            array_push($posts, $newPost);
         }
         $view = new View('home/index', ['posts' => $posts]);
         $view->render(); 
