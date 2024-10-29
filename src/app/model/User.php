@@ -47,8 +47,8 @@ class User {
         return $this->email;
     }
 
-    public function check_password(string $password) {
-        return $this->password == sha1($password);
+    public function checkPassword(string $password) {
+        return $this->password === sha1($password);
     }
 
     public function setName(string $name) {
