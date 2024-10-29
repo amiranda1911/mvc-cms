@@ -24,6 +24,7 @@ class Persistence {
         $this->entityManager = new EntityManager($connection, $config);
     }
 
+    //retorna todas as ocorrencias
     public function findAll(String $className, $params = array()) {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('c')->from($className, 'c');
@@ -33,8 +34,14 @@ class Persistence {
         return $queryBuilder->getQuery()->getResult();
     }
 
+    // procura a ocorrencia a partir da chave primaria
     public function find(String $className, String $id) {
         return $this->entityManager->find($className, $id);
+    }
+
+    //procura a ocorrencia a partir dos parametos
+    public function findBy(String $className, $params) {
+        return $this->entityManager->getRepository("app\model\\".$className )->findBy($params);
     }
 
     public function save($object) {
