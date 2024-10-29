@@ -17,6 +17,7 @@ class LoginController extends Controller {
                 $user= $user[0];
                 //$user = new User($user->getId, $user->name, $user->content, $user->password);
                 if($user->checkPassword($_REQUEST['password'])){
+                    $this->session->user = $user->getId();
                     header("Location:/user/view/".$user->getId());
                     exit();
                 }else{
