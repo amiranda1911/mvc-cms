@@ -20,7 +20,7 @@ class Post {
     #[ORM\Column(type: 'string', name: 'title')]
     private $title;
 
-    #[ORM\Column(type: 'string', name: 'content')]
+    #[ORM\Column(type: 'text', name: 'content')]
     private $content;
 
     public function __construct($title, $content, $user){
