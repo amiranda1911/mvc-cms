@@ -29,6 +29,7 @@ class UserController extends Controller{
         }
         elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             $user = new User(null, $_REQUEST['name'], $_REQUEST['email'], $_REQUEST['password']);
+            $user->setPassword($_REQUEST['password']); //Realizar a encriptação da senha
             $this->persistence->save($user);
             $view = new View('user/view', 
                 ['id' => $user->getId(),
