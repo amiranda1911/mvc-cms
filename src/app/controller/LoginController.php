@@ -32,4 +32,7 @@ class LoginController extends Controller {
             $view->render();
         }
     }
+    public function logout(){
+        $this->session->user = false;
+    }
 }
