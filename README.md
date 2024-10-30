@@ -10,7 +10,7 @@ define('APP_SEED', getenv('APP_SEED')); // valor aleatório
 define('MYSQL_HOST', getenv('MYSQL_HOST')); 
 define('MYSQL_USER', getenv('MYSQL_USER'));
 define('MYSQL_PASSWORD', getenv('MYSQL_PASSWORD'));
-define('GOLD_APP_DATABASE', getenv('GOLD_APP_DATABASE'));
+define('GOLD_APP_DATABASE', getenv('APP_DATABASE'));
 ```
 
 
@@ -29,13 +29,26 @@ class <Controller>Controller extends Controller{
 
 #Mapa da Aplicação
 
+/
+pagina inicial - exibe os conteudos postados
+
+/post
+cria uma nova postagem - necessário realizar login
+
+/post/view/:id
+exibe a postagem selecionada
+
 /user
-lista usuarion
+lista usuarios
 
 /user/create
 cria um novo usuario
 
-/transaction/create/{id}
-cria uma nova transação para o usuario
+/user/view/:id
+exibe informações e postagens do usuario selecionado
 
+/login
+realiza o login do usuario
 
+/login/logout
+realiza o logout do usuario
